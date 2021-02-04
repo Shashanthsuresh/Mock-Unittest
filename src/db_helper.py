@@ -11,7 +11,7 @@ class DbHelper:
     
         mycursor = mydb.cursor()
     
-        mycursor.execute("select * from employee_details order by salary desc ")   #passing the query
+        mycursor.execute("select max(salary) from employee_details ")   #passing the query
 
         for row in mycursor.fetchone(): 
             return row
@@ -26,7 +26,7 @@ class DbHelper:
     
         mycursor = mydb.cursor()
     
-        mycursor.execute("select * from employee_details order by salary ")   #passing the query
+        mycursor.execute("select min(salary) from employee_details ")   #passing the query
 
         for row in mycursor.fetchone(): 
             return row
