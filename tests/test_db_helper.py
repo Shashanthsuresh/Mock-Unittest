@@ -1,6 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 from src.db_helper import DbHelper
+import mysql.connector
 
 class MockDB(TestCase):
     def setUp(self):
@@ -11,19 +12,19 @@ class MockDB(TestCase):
         
     @patch('src.db_helper.DbHelper')
     def test_max_salary_is_greater_than_min_salary(self, MockDbHelper):
-        maxsalary = MockDbHelper()
+        totalsalary = MockDbHelper()
 
         #mocking for maximum value
-        maxsalary.get_maximum_salary.return_value = 100
+        totalsalary.get_maximum_salary.return_value = 100
         
-        actualmax = salary.get_maximum_salary("select max(salary) from employee_details")
+        actualmax = totalsalary.get_maximum_salary("select max(salary) from employee_details")
         expectedmax = 100
 
         
         #mocking for minimum value
-        minsalary.get_minimum_salary.return_value = 50
+        totalsalary.get_minimum_salary.return_value = 50
 
-        actualmin = salary.get_maximum_salary("select min(salary) from employee_details")
+        actualmin = totalsalary.get_maximum_salary("select min(salary) from employee_details")
         expectedmin = 50
         
         
